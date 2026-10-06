@@ -1,108 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire de contact</title>
-    <style>
-        /* Intégration des classes CSS */
-        .contact-form {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #f8f8f8;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-title {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .form-description {
-            font-size: 16px;
-            margin-bottom: 30px;
-            color: #666;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #555;
-        }
-
-        .form-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Vue opérationnelle des flux de production VIT'ALL+">
+  <title>VIT’ALL+ — Flux de production</title>
+  <style>
+    :root{--ink:#153229;--muted:#6d7d77;--line:#dfe7e2;--cream:#f6f4ed;--paper:#fff;--green:#1f6a50;--mint:#dceee5;--lime:#c9e36d;--gold:#efb95e;--orange:#de7b4d;--shadow:0 16px 40px rgba(24,55,44,.08)}
+    *{box-sizing:border-box} body{margin:0;background:var(--cream);color:var(--ink);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    button{font:inherit}.shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh}.sidebar{background:#173d31;color:#fff;padding:28px 20px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}.logo{font-size:25px;font-weight:800;letter-spacing:-1px}.logo b{color:var(--lime)}.tagline{font-size:10px;letter-spacing:1.7px;text-transform:uppercase;color:#a8c3b8;margin:2px 0 44px}.nav-label{font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:#7fa095;margin:0 10px 10px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#b9cdc5;text-align:left;padding:11px 12px;border-radius:9px;cursor:pointer}.nav button.active,.nav button:hover{background:#285646;color:#fff}.nav .ico{display:inline-grid;width:25px}.plant{margin-top:auto;border-top:1px solid #31594b;padding:20px 8px 0}.plant small{color:#86a59a}.plant strong{display:block;margin:4px 0 10px}.status{display:flex;gap:7px;align-items:center;color:#c4d7d0;font-size:12px}.dot{width:8px;height:8px;background:#9fce57;border-radius:50%;box-shadow:0 0 0 4px rgba(159,206,87,.12)}
+    main{padding:30px 36px 48px;min-width:0}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:26px}.eyebrow{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:1.8px;font-weight:750}.top h1{font-family:Georgia,serif;font-size:34px;margin:4px 0 0;font-weight:500;letter-spacing:-.8px}.date{color:var(--muted);font-size:12px}.controls{display:flex;align-items:center;gap:10px}.select,.icon-btn{border:1px solid var(--line);background:#fff;padding:9px 12px;border-radius:9px;color:var(--ink)}.icon-btn{width:38px;height:38px;padding:0;cursor:pointer;position:relative}.badge{position:absolute;right:-3px;top:-4px;background:var(--orange);color:#fff;border-radius:9px;font-size:9px;padding:1px 5px;border:2px solid var(--cream)}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}.metric{background:var(--paper);border:1px solid #e7ebe8;border-radius:14px;padding:17px 18px;box-shadow:0 3px 12px rgba(24,55,44,.025)}.metric-head{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.metric-head span:last-child{color:var(--green);background:#e9f3ed;border-radius:12px;padding:2px 7px}.metric-value{font:500 28px/1.2 Georgia,serif;margin:12px 0 4px}.metric-foot{font-size:11px;color:var(--muted)}.progress{height:4px;background:#edf1ee;border-radius:4px;margin-top:12px;overflow:hidden}.progress i{display:block;height:100%;background:var(--green);border-radius:4px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;margin:6px 0 12px}.section-head h2{font:500 21px Georgia,serif;margin:0}.section-head p{margin:3px 0 0;color:var(--muted);font-size:11px}.legend{display:flex;gap:12px;font-size:10px;color:var(--muted)}.legend i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px}
+    .flow-wrap{background:#fff;border:1px solid #e6ebe7;border-radius:16px;padding:19px 18px 15px;box-shadow:var(--shadow);overflow:auto}.flow{display:grid;grid-template-columns:repeat(7,minmax(130px,1fr));gap:18px;min-width:980px}.stage{position:relative;border:1px solid var(--line);border-radius:12px;padding:14px;background:#fbfcfb;min-height:148px;transition:.2s;cursor:pointer}.stage:hover,.stage.selected{transform:translateY(-2px);border-color:#7caf98;box-shadow:0 9px 24px rgba(28,91,69,.11)}.stage:not(:last-child):after{content:"→";position:absolute;right:-15px;top:58px;color:#aab8b2;font-weight:bold}.stage-top{display:flex;justify-content:space-between;align-items:center}.stage-num{color:#9aaba4;font-size:10px}.stage-icon{width:29px;height:29px;border-radius:8px;display:grid;place-items:center;background:var(--mint);color:var(--green);font-size:15px}.stage h3{font-size:12px;margin:11px 0 5px}.stage p{font-size:10px;color:var(--muted);margin:0;min-height:29px}.stage-stat{border-top:1px solid #e8ece9;margin-top:11px;padding-top:9px;display:flex;justify-content:space-between;align-items:center;font-size:10px}.pill{padding:3px 6px;border-radius:8px;background:#edf5ef;color:var(--green)}.pill.watch{background:#fff1de;color:#9b5c10}.pill.alert{background:#fbe8e2;color:#a84b2e}
+    .lower{display:grid;grid-template-columns:1.45fr .85fr;gap:18px;margin-top:20px}.panel{background:#fff;border:1px solid #e6ebe7;border-radius:15px;padding:19px;box-shadow:0 4px 14px rgba(24,55,44,.035)}.panel h2{font:500 20px Georgia,serif;margin:0}.panel-sub{font-size:11px;color:var(--muted);margin:3px 0 17px}.lot-head,.lot{display:grid;grid-template-columns:1.1fr 1fr .8fr .7fr;gap:10px;align-items:center}.lot-head{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#91a099;padding:0 9px 7px}.lot{padding:10px 9px;border-top:1px solid #edf0ee;font-size:11px}.lot strong{font-size:11px}.lot small{display:block;color:var(--muted)}.bar{height:5px;background:#eef1ef;border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green)}.mini-pill{justify-self:start;padding:3px 7px;border-radius:8px;background:#edf5ef;color:var(--green);font-size:9px}.mini-pill.orange{background:#fff0df;color:#a56116}.mini-pill.red{background:#fae8e3;color:#a8452a}.agenda-item{display:grid;grid-template-columns:46px 1fr;gap:12px;padding:12px 0;border-top:1px solid #edf0ee}.agenda-item:first-of-type{border-top:0}.time{color:var(--green);font-weight:700;font-size:11px}.agenda-item strong{font-size:11px}.agenda-item p{font-size:10px;color:var(--muted);margin:3px 0}.people{display:flex;margin-top:6px}.avatar{width:22px;height:22px;border-radius:50%;background:#d8e8df;border:2px solid #fff;margin-right:-5px;display:grid;place-items:center;font-size:8px;font-weight:700;color:var(--green)}
+    .drawer{position:fixed;right:22px;bottom:22px;width:330px;background:#173d31;color:white;border-radius:15px;padding:18px;box-shadow:0 20px 55px rgba(5,30,21,.25);transform:translateY(130%);transition:.3s;z-index:4}.drawer.show{transform:none}.drawer button{float:right;border:0;background:transparent;color:white;cursor:pointer}.drawer h3{margin:0 0 8px;font-family:Georgia,serif}.drawer p{color:#bdd0c8;font-size:11px}.drawer dl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0}.drawer dt{font-size:9px;color:#8faf9f;text-transform:uppercase}.drawer dd{margin:2px 0;font-size:12px}
+    @media(max-width:900px){.shell{grid-template-columns:68px 1fr}.sidebar{padding:24px 10px}.logo{font-size:17px}.tagline,.nav-label,.nav button span:not(.ico),.plant strong,.plant small,.status span{display:none}.nav button{text-align:center}.metrics{grid-template-columns:repeat(2,1fr)}main{padding:25px 20px}.lower{grid-template-columns:1fr}.controls .select{display:none}}
+    @media(max-width:560px){.shell{display:block}.sidebar{height:auto;position:static;flex-direction:row;align-items:center;padding:14px 18px}.nav{display:none}.plant{margin:0 0 0 auto;border:0;padding:0}.metrics{grid-template-columns:1fr 1fr;gap:8px}.metric{padding:13px}.metric-value{font-size:23px}.top h1{font-size:27px}main{padding:20px 12px}.date{display:none}.lot-head,.lot{grid-template-columns:1.2fr 1fr .7fr}.lot>:nth-child(3),.lot-head>:nth-child(3){display:none}.legend{display:none}}
+  </style>
 </head>
 <body>
-    <div class="contact-form">
-        <h1 class="form-title">Contactez-nous</h1>
-        <p class="form-description">Bienvenue dans le code de gabriel L fsdfsqdgfegezgzesgfdsfgdsfgsdfg !</p>
-        
-        <form action="/page-traitement-donnees" method="post">
-            <div class="form-group">
-                <label class="form-label" for="nom">Votre nom :</label>
-                <input class="form-input" type="text" id="nom" name="nom" placeholder="Entrez votre nom" required>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label" for="email">Votre e-mail :</label>
-                <input class="form-input" type="email" id="email" name="email" placeholder="Entrez votre e-mail" required>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label" for="sujet">Sujet :</label>
-                <select class="form-select" name="sujet" id="sujet" required>
-                    <option value="" disabled selected hidden>Choisissez le sujet</option>
-                    <option value="probleme-compte">Problème avec mon compte</option>
-                    <option value="question-produit">Question à propos d’un produit</option>
-                    <option value="suivi-commande">Suivi de ma commande</option>
-                    <option value="autre">Autre...</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label" for="message">Votre message :</label>
-                <textarea class="form-textarea" id="message" name="message" placeholder="Entrez votre message" required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <button class="form-button" type="submit">Envoyer mon message</button>
-            </div>
-        </form>
-    </div>
+<div class="shell">
+  <aside class="sidebar">
+    <div><div class="logo">VIT’ALL<b>+</b></div><div class="tagline">Santé naturelle · 1987</div></div>
+    <div class="nav-label">Pilotage</div>
+    <nav class="nav" aria-label="Navigation principale">
+      <button><span class="ico">⌂</span><span>Vue d’ensemble</span></button>
+      <button class="active"><span class="ico">⌁</span><span>Flux de production</span></button>
+      <button><span class="ico">▦</span><span>Lots &amp; planning</span></button>
+      <button><span class="ico">✓</span><span>Qualité &amp; contrôle</span></button>
+      <button><span class="ico">◇</span><span>Approvisionnements</span></button>
+      <button><span class="ico">↗</span><span>Expéditions</span></button>
+    </nav>
+    <div class="plant"><small>Site de production</small><strong>Sargé-lès-Le Mans</strong><div class="status"><i class="dot"></i><span>Activité nominale</span></div></div>
+  </aside>
+  <main>
+    <header class="top">
+      <div><div class="eyebrow">Cockpit industriel</div><h1>Flux de production</h1><div class="date">Lundi 5 octobre · Mise à jour à 08:42</div></div>
+      <div class="controls"><select class="select" id="period" aria-label="Période"><option>Aujourd’hui</option><option>Cette semaine</option><option>Ce mois</option></select><button class="icon-btn" aria-label="Notifications">♢<span class="badge">3</span></button><button class="icon-btn" aria-label="Profil">GL</button></div>
+    </header>
+    <section class="metrics" aria-label="Indicateurs clés">
+      <article class="metric"><div class="metric-head"><span>Lots en cours</span><span>+2</span></div><div class="metric-value">12</div><div class="metric-foot">sur 16 planifiés aujourd’hui</div><div class="progress"><i style="width:75%"></i></div></article>
+      <article class="metric"><div class="metric-head"><span>Rendement global</span><span>+1,8%</span></div><div class="metric-value">94,2%</div><div class="metric-foot">objectif : 92%</div><div class="progress"><i style="width:94%"></i></div></article>
+      <article class="metric"><div class="metric-head"><span>Conformité qualité</span><span>Stable</span></div><div class="metric-value">99,6%</div><div class="metric-foot">1 contrôle à revalider</div><div class="progress"><i style="width:99%"></i></div></article>
+      <article class="metric"><div class="metric-head"><span>Délai moyen</span><span>− 4 h</span></div><div class="metric-value">3,2 j</div><div class="metric-foot">de la pesée à l’expédition</div><div class="progress"><i style="width:82%"></i></div></article>
+    </section>
+    <div class="section-head"><div><h2>Chaîne de fabrication</h2><p>Sélectionnez une étape pour afficher ses responsables et points de contrôle.</p></div><div class="legend"><span><i style="background:#4c9475"></i>Nominal</span><span><i style="background:#efb95e"></i>À surveiller</span><span><i style="background:#de7b4d"></i>Action requise</span></div></div>
+    <section class="flow-wrap" aria-label="Étapes du flux de production"><div class="flow" id="flow"></div></section>
+    <section class="lower">
+      <article class="panel"><h2>Lots prioritaires</h2><div class="panel-sub">Avancement en temps réel des séries actives</div><div class="lot-head"><span>Lot / produit</span><span>Avancement</span><span>Étape</span><span>Échéance</span></div><div id="lots"></div></article>
+      <article class="panel"><h2>Rituels d’équipe</h2><div class="panel-sub">Points de passage de la journée</div>
+        <div class="agenda-item"><div class="time">09:00</div><div><strong>Top 15 production</strong><p>Sécurité · qualité · charge · blocages</p><div class="people"><i class="avatar">ML</i><i class="avatar">JR</i><i class="avatar">AK</i></div></div></div>
+        <div class="agenda-item"><div class="time">11:30</div><div><strong>Libération des lots</strong><p>Revue des résultats laboratoire</p><div class="people"><i class="avatar">SB</i><i class="avatar">CM</i></div></div></div>
+        <div class="agenda-item"><div class="time">15:00</div><div><strong>Plan de charge J+1</strong><p>Matières, lignes et ressources</p><div class="people"><i class="avatar">ML</i><i class="avatar">VD</i><i class="avatar">JR</i></div></div></div>
+      </article>
+    </section>
+  </main>
+</div>
+<aside class="drawer" id="drawer" aria-live="polite"><button id="close" aria-label="Fermer">×</button><h3 id="drawerTitle"></h3><p id="drawerDesc"></p><dl><div><dt>Responsable</dt><dd id="drawerOwner"></dd></div><div><dt>Point de contrôle</dt><dd id="drawerControl"></dd></div></dl></aside>
+<script>
+  const stages=[
+    {icon:'⌕',title:'Réception',desc:'Ingrédients & emballages',count:'3 lots',state:'Nominal',owner:'Équipe Supply',control:'COA & traçabilité'},
+    {icon:'⚖',title:'Pesée',desc:'Préparation des ordres',count:'2 lots',state:'Nominal',owner:'Atelier Pesée',control:'Double pesée'},
+    {icon:'⟳',title:'Mélange',desc:'Homogénéisation des actifs',count:'3 lots',state:'À surveiller',owner:'M. Laurent',control:'Temps & homogénéité'},
+    {icon:'⬡',title:'Mise en forme',desc:'Gélules, comprimés, poudres',count:'2 lots',state:'Nominal',owner:'J. Roux',control:'Poids moyen'},
+    {icon:'✓',title:'Contrôle qualité',desc:'Analyses & libération',count:'1 lot',state:'Action requise',owner:'S. Bernard',control:'Microbiologie'},
+    {icon:'▣',title:'Conditionnement',desc:'Piluliers & étiquetage',count:'1 lot',state:'Nominal',owner:'A. Klein',control:'Conformité étiquette'},
+    {icon:'↗',title:'Expédition',desc:'Préparation & distribution',count:'4 lots',state:'Nominal',owner:'V. Dubois',control:'Bon de livraison'}
+  ];
+  const lots=[
+    {id:'VT-241005-08',name:'Magnésium Bisglycinate',progress:82,stage:'Conditionnement',due:'Aujourd’hui',tone:''},
+    {id:'VT-241005-11',name:'Vitamine D3 2000 UI',progress:61,stage:'Mise en forme',due:'Aujourd’hui',tone:'orange'},
+    {id:'VT-241004-19',name:'Complexe Oméga 3',progress:47,stage:'Contrôle qualité',due:'14:30',tone:'red'},
+    {id:'VT-241006-02',name:'Collagène marin',progress:28,stage:'Mélange',due:'Demain',tone:''}
+  ];
+  const flow=document.querySelector('#flow');
+  stages.forEach((s,i)=>{const state=s.state==='Nominal'?'':s.state==='À surveiller'?'watch':'alert';const el=document.createElement('article');el.className='stage';el.tabIndex=0;el.innerHTML=`<div class="stage-top"><span class="stage-num">0${i+1}</span><span class="stage-icon">${s.icon}</span></div><h3>${s.title}</h3><p>${s.desc}</p><div class="stage-stat"><strong>${s.count}</strong><span class="pill ${state}">${s.state}</span></div>`;const open=()=>showStage(el,s);el.onclick=open;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' ')open()};flow.appendChild(el)});
+  document.querySelector('#lots').innerHTML=lots.map(l=>`<div class="lot"><div><strong>${l.id}</strong><small>${l.name}</small></div><div><div class="bar"><i style="width:${l.progress}%"></i></div><small>${l.progress}%</small></div><span class="mini-pill ${l.tone}">${l.stage}</span><strong>${l.due}</strong></div>`).join('');
+  const drawer=document.querySelector('#drawer');function showStage(el,s){document.querySelectorAll('.stage').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');drawer.classList.add('show');drawerTitle.textContent=s.title;drawerDesc.textContent=s.desc+' — '+s.count.toLowerCase()+' actuellement dans cette étape.';drawerOwner.textContent=s.owner;drawerControl.textContent=s.control}document.querySelector('#close').onclick=()=>drawer.classList.remove('show');
+</script>
 </body>
 </html>
- 
